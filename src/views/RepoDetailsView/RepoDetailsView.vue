@@ -112,6 +112,7 @@ h6 {
   flex-direction: column;
   gap: 1em;
   white-space: pre-wrap;
+  word-wrap: break-word;
   overflow: auto;
 }
 .readme-container h1,
