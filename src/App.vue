@@ -40,6 +40,7 @@ code {
   font-size: 14px;
   background-color: #000;
   overflow: auto;
+  color: #fff;
 }
 
 .open-in-github {

@@ -91,6 +91,7 @@ h6 {
 .readme > h2 {
   font-size: 1.5em;
   border-bottom: 1px solid var(--color-border);
+  overflow: auto;
 }
 
 .open-in-github {
@@ -110,6 +111,8 @@ h6 {
   display: flex;
   flex-direction: column;
   gap: 1em;
+  white-space: pre-wrap;
+  overflow: auto;
 }
 .readme-container h1,
 h2,
