@@ -1,6 +1,6 @@
 <script allowjs>
 export default {
-  props: ['width', 'height'],
+  props: ['width', 'height']
 }
 </script>
 
@@ -9,8 +9,8 @@ export default {
     xmlns="http://www.w3.org/2000/svg"
     x="0px"
     y="0px"
-    :width="width??'24'"
-    :height="height??'24'"
+    :width="width ?? '24'"
+    :height="height ?? '24'"
     viewBox="0 0 24 24"
   >
     <path
@@ -18,3 +18,11 @@ export default {
     ></path>
   </svg>
 </template>
+
+<style scoped>
+svg {
+  stroke-width: 1;
+  stroke: var(--color-text);
+  fill: var(--color-text);
+}
+</style>

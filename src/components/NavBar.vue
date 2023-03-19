@@ -1,5 +1,5 @@
 <script setup allowjs>
-import { RouterLink, RouterView } from 'vue-router'
+import { RouterLink } from 'vue-router'
 
 import { useGithubDataStore } from '@/stores/githubData'
 import { storeToRefs } from 'pinia'
@@ -11,11 +11,11 @@ const { profile } = storeToRefs(githubData)
 
 <template>
   <div class="navbar">
-    <RouterLink :to="{name: 'home'}" v-if="profile" class="profile-info">
+    <RouterLink :to="{ name: 'home' }" v-if="profile" class="profile-info">
       <img :src="profile.avatar_url" alt="avatar" class="avatar-img" height="30" />
-        <span>{{ profile.login }}</span>
+      <span>{{ profile.login }}</span>
     </RouterLink>
-    <RouterLink :to="{name: 'repos'}" >Repositories</RouterLink>
+    <RouterLink :to="{ name: 'repos' }">Repositories</RouterLink>
   </div>
 </template>
 
@@ -27,8 +27,6 @@ const { profile } = storeToRefs(githubData)
   padding: 0 1em;
   height: 3em;
   border: thin solid var(--color-border);
-  /* background-color: #24292e;
-  color: #fff; */
 }
 .profile-info {
   display: flex;
@@ -39,13 +37,13 @@ const { profile } = storeToRefs(githubData)
   border-radius: 50%;
 }
 
-a{
-    text-decoration: none;
-    color: inherit;
+a {
+  text-decoration: none;
+  color: inherit;
 }
 
-a:hover{
-    background: none;
-    filter: brightness(1.5);
+a:hover {
+  background: none;
+  filter: brightness(1.5);
 }
 </style>

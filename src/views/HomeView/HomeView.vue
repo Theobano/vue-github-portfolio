@@ -14,7 +14,7 @@ const { profile, loadingProfile, error } = storeToRefs(githubData)
 
 <template>
   <main>
-    <Loading v-if="loadingProfile"/>
+    <Loading v-if="loadingProfile" />
     <div v-else-if="error">error: {{ error }}</div>
     <div v-else>
       <div class="flex-center avatar-container"><img :src="profile.avatar_url" /></div>

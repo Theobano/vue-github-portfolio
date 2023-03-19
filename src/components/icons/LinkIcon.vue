@@ -1,6 +1,6 @@
 <script allowjs>
 export default {
-  props: ['width', 'height', 'strokeColor']
+  props: ['width', 'height']
 }
 </script>
 
@@ -9,10 +9,7 @@ export default {
     :width="width ?? 24"
     :height="height ?? 24"
     viewBox="0 0 32 32"
-    fill="none"
-    :stroke="strokeColor ?? '#ffffff'"
     xmlns="http://www.w3.org/2000/svg"
-    stroke-width="1"
   >
     <g id="icomoon-ignore"></g>
     <path
@@ -23,3 +20,11 @@ export default {
     ></path>
   </svg>
 </template>
+
+<style scoped>
+svg {
+  stroke-width: 1;
+  stroke: var(--color-text);
+  fill: var(--color-text);
+}
+</style>

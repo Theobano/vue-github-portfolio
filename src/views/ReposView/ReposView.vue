@@ -1,5 +1,5 @@
 <script allowjs>
-import { RouterLink, RouterView } from 'vue-router'
+import { RouterView } from 'vue-router'
 import { useGithubDataStore } from '@/stores/githubData'
 import { storeToRefs } from 'pinia'
 import { default as useWindowSize } from '@/composables/windowSize'
@@ -39,9 +39,8 @@ export default {
         (this.currentPage - 1) * this.pageSize,
         this.currentPage * this.pageSize
       )
-    },
-    
-  },
+    }
+  }
 }
 </script>
 
@@ -54,24 +53,16 @@ export default {
       </div>
     </div>
     <div v-if="pageCount > 1" class="pagination flex-center">
-      <button
-        v-if="currentPage > 1"
-        @click="(currentPage--, $router.push(`/repos`))"
-      >
-        &lt
-      </button>
+      <button v-if="currentPage > 1" @click="currentPage--, $router.push(`/repos`)">&lt</button>
       <button
         v-for="page in pageCount"
         :key="page"
-        @click="(currentPage = page, $router.push(`/repos`))"
-        :class="{ 'active': page === currentPage }"
+        @click=";(currentPage = page), $router.push(`/repos`)"
+        :class="{ active: page === currentPage }"
       >
         {{ page }}
       </button>
-      <button
-        v-if="currentPage < pageCount"
-        @click="(currentPage++, $router.push(`/repos`))"
-      >
+      <button v-if="currentPage < pageCount" @click="currentPage++, $router.push(`/repos`)">
         &gt
       </button>
     </div>
@@ -79,12 +70,9 @@ export default {
 </template>
 
 <style scoped>
-
 .repos-container {
   display: flex;
   flex-direction: column;
-  /* make grid templates auto size and number */
-  /*grid-template-columns: repeat(auto-fill, minmax(20em, 1fr));*/
   width: 100%;
   grid-gap: 1em;
   padding: 1em;
@@ -94,21 +82,26 @@ export default {
   flex-direction: column;
 }
 
-.pagination{
+.pagination {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 1em;
 }
-.pagination button{
+.pagination button {
   background: none;
   padding: 0.5em 1em;
   border: thin solid var(--color-border);
-  color: white;
+  color: var(--color-text);
   font-size: 1.2em;
   cursor: pointer;
 }
-.pagination button.active{
+
+.pagination button:hover {
+  border: thin solid var(--color-border-hover);
+  filter: brightness(1.5);
+}
+.pagination button.active {
   background: var(--color-border);
 }
 </style>

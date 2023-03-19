@@ -2,12 +2,11 @@
 import { RouterLink, RouterView } from 'vue-router'
 import NavBar from './components/NavBar.vue'
 
-import { useGithubDataStore } from '@/stores/githubData';
+import { useGithubDataStore } from '@/stores/githubData'
 
-const githubData = useGithubDataStore();
+const githubData = useGithubDataStore()
 
-githubData.fetchProfile();
-
+githubData.fetchProfile()
 </script>
 
 <template>
@@ -15,16 +14,15 @@ githubData.fetchProfile();
   <RouterView />
 </template>
 
-
 <style>
-main{
-padding: 10vh 10vw;
+main {
+  padding: 10vh 10vw;
 }
-svg{
+svg {
   display: block;
 }
 
-.flex-center{
+.flex-center {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -33,15 +31,18 @@ pre {
   background-color: #000;
   padding: 10px;
   border-radius: 5px;
+  white-space: pre-wrap;
+  overflow: auto;
 }
 
 code {
-  font-family: "Courier New", Courier, monospace;
+  font-family: 'Courier New', Courier, monospace;
   font-size: 14px;
   background-color: #000;
+  overflow: auto;
 }
 
-.open-in-github{
+.open-in-github {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -49,12 +50,12 @@ code {
   border: thin solid var(--color-border);
   background-color: #02022e17;
   text-decoration: none;
-  color: white;
+  color: var(--color-text);
   border-radius: 5px;
 }
 
-.horizontal-flex-small-gap{
+.horizontal-flex-small-gap {
   display: flex;
-  gap: .5em;
+  gap: 0.5em;
 }
 </style>

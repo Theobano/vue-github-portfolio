@@ -21,7 +21,7 @@ export default {
 .loading__spinner {
   width: 2em;
   height: 2em;
-  border: 0.25em solid #fff;
+  border: 0.25em solid var(--color-border);
   border-radius: 50%;
   border-top-color: transparent;
   animation: spin 1s linear infinite;

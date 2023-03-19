@@ -9,8 +9,8 @@ export const useGithubDataStore = defineStore('githubData', {
     loadingRepos: false
   }),
   getters: {
-      getProfile: (state) => state.profile,
-      getRepos: (state) => state.repos,
+    getProfile: (state) => state.profile,
+    getRepos: (state) => state.repos
   },
   actions: {
     async fetchProfile() {
