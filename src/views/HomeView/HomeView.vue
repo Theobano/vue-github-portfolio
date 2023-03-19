@@ -20,7 +20,9 @@ const { profile, loadingProfile, error } = storeToRefs(githubData)
       <div class="flex-center avatar-container"><img :src="profile.avatar_url" /></div>
       <div class="container">
         <h1>{{ profile.name }} ({{ profile.login }})</h1>
-        <div>{{ profile.bio }}</div>
+        <div v-if="profile.bio" class="bio-container">
+          <h2>About</h2>
+          {{ profile.bio }}</div>
         <a :href="profile.html_url" target="_blank" class="open-in-github horizontal-flex-small-gap"
           ><span>Visit GitHub Page</span><span><GitHubIcon /></span
         ></a>
@@ -73,6 +75,22 @@ main > div {
 .container > h1 {
   font-size: 2em;
   text-align: center;
+}
+
+.bio-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  align-items: center;
+  border: 1px solid var(--color-border);
+  padding: 1em;
+  border-radius: 0.5em;
+}
+
+.bio-container > h2 {
+  font-size: 1.5em;
+  border-bottom: 1px solid var(--color-border);
+  font-weight: normal;
 }
 
 .connections {

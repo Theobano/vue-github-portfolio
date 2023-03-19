@@ -40,10 +40,11 @@ const { profile } = storeToRefs(githubData)
 a {
   text-decoration: none;
   color: inherit;
+  padding: 0.5em 1em;
 }
 
 a:hover {
-  background: none;
   filter: brightness(1.5);
+  background-color: var(--color-border);
 }
 </style>

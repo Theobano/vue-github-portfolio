@@ -83,6 +83,15 @@ export default {
   justify-content: center;
 }
 
+a{
+  text-decoration: none;
+  color: var(--color-text);
+
+}
+a:hover{
+  background-color: var(--color-border);
+}
+
 @media only screen and (min-width: 700px) {
   .repo {
     display: flex;
