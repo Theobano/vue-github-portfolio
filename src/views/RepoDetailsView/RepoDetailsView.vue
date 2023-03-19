@@ -1,6 +1,7 @@
 <script allowjs>
 import MarkdownIt from 'markdown-it'
 import GitHubIcon from '../../components/icons/GitHubIcon.vue'
+import Loading from '../../components/Loading.vue';
 export default {
     props: ["repo"],
     data() {
@@ -22,7 +23,7 @@ export default {
         this.readme = md.render(readme);
         this.isFetchingReadme = false;
     },
-    components: { GitHubIcon }
+    components: { GitHubIcon, Loading }
 }
 </script>
 
@@ -34,9 +35,10 @@ export default {
     <a :href="repo.html_url" target="_blank" rel="noopener noreferrer" class="open-in-github"> <span>View in GitHub</span><span><GitHubIcon/> </span> </a>
 
     <div>
-      <section v-if="readme" @click="showReadme = !showReadme">
+      <Loading v-if="isFetchingReadme" />
+      <section v-if="readme" class="readme">
         <h2>Readme</h2>
-        <div v-if="showReadme" v-html="readme" class="readme-container"></div>
+        <div  v-html="readme" class="readme-container"></div>
       </section>
     </div>
   </div>
@@ -60,10 +62,18 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: bold;
 }
 
-.readme-container h2 {
-  font-size: 5em;
-  margin: 0.67em 0;
+.readme{
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  padding: 1em;
+  margin: 1em 0;
 }
+
+.readme>h2 {
+  font-size: 1.5em;
+  border-bottom: 1px solid var(--color-border);
+}
+
 
 a {
   color: #0366d6;
@@ -109,5 +119,20 @@ code {
 }
 .open-in-github:hover {
   text-decoration: none;
+}
+</style>
+
+<style>
+.readme-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+.readme-container h1, h2, h3, h4, h5, h6 {
+  font-weight: bold;
+}
+.readme-container h2 {
+  font-size: 1.5em;
+  padding-bottom: 0.5em;
 }
 </style>

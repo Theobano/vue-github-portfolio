@@ -55,12 +55,24 @@ export default {
     </div>
     <div v-if="pageCount > 1" class="pagination flex-center">
       <button
+        v-if="currentPage > 1"
+        @click="(currentPage--, $router.push(`/repos`))"
+      >
+        &lt
+      </button>
+      <button
         v-for="page in pageCount"
         :key="page"
         @click="(currentPage = page, $router.push(`/repos`))"
         :class="{ 'active': page === currentPage }"
       >
         {{ page }}
+      </button>
+      <button
+        v-if="currentPage < pageCount"
+        @click="(currentPage++, $router.push(`/repos`))"
+      >
+        &gt
       </button>
     </div>
   </main>

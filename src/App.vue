@@ -45,7 +45,6 @@ code {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: .2em;
   padding: 0.5em 1em;
   border: thin solid var(--color-border);
   background-color: #02022e17;
@@ -54,4 +53,8 @@ code {
   border-radius: 5px;
 }
 
+.horizontal-flex-small-gap{
+  display: flex;
+  gap: .5em;
+}
 </style>

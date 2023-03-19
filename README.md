@@ -4,7 +4,7 @@ This is a Vue project of my GitHub public portfolio built using GitHub's api.
 
 ## Live link
 
-This project is hosted at <a href="https://vue-github-portfolio.vercel.app/">vue-github-portfolio.vercel.app</a>
+This project is hosted at [vue-github-portfolio.vercel.app](https://vue-github-portfolio.vercel.app/).
 
 ## Recommended IDE Setup
 
