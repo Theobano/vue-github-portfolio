@@ -1,6 +1,10 @@
 # vue-github-portfolio
 
-This template should help get you started developing with Vue 3 in Vite.
+This is a Vue project of my GitHub public portfolio built using GitHub's api.
+
+## Live link
+
+This project is hosted at <a href="https://vue-github-portfolio.vercel.app/">vue-github-portfolio.vercel.app</a>
 
 ## Recommended IDE Setup
 

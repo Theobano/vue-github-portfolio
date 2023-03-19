@@ -1,16 +1,7 @@
 <script allowjs>
 export default {
   props: ['width', 'height'],
-  data() {
-    return {
-      width: this.width ?? 24,
-      height: this.height ?? 24
-    }
-  }
 }
-
-// const githubData = useGithubDataStore();
-// const { repo, loadingRepo, error } = storeToRefs(githubData);
 </script>
 
 <template>
@@ -18,8 +9,8 @@ export default {
     xmlns="http://www.w3.org/2000/svg"
     x="0px"
     y="0px"
-    :width="width"
-    :height="height"
+    :width="width??'24'"
+    :height="height??'24'"
     viewBox="0 0 24 24"
   >
     <path

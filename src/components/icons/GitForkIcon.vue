@@ -1,11 +1,6 @@
 <script allowjs>
 export default {
   props: ['width', 'height', 'strokeColor'],
-  data() {
-    return {
-    //   strokeColor: this.strokeColor ?? '#000000'
-    }
-  }
 }
 </script>
 
