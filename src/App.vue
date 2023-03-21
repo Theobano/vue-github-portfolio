@@ -1,8 +1,10 @@
 <script setup allowjs>
 import { RouterLink, RouterView } from 'vue-router'
 import NavBar from './components/NavBar.vue'
+import Footer from './components/Footer.vue'
 
 import { useGithubDataStore } from '@/stores/githubData'
+import ErrorBoundary from './components/ErrorBoundary.vue'
 
 const githubData = useGithubDataStore()
 
@@ -11,7 +13,10 @@ githubData.fetchProfile()
 
 <template>
   <NavBar />
-  <RouterView />
+  <ErrorBoundary>
+    <RouterView />
+  </ErrorBoundary>
+  <Footer />
 </template>
 
 <style>

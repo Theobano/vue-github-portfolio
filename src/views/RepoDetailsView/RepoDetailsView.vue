@@ -1,5 +1,6 @@
 <script allowjs>
 import MarkdownIt from 'markdown-it'
+import ErrorComponent from '../../components/ErrorComponent.vue'
 import GitHubIcon from '../../components/icons/GitHubIcon.vue'
 import Loading from '../../components/Loading.vue'
 export default {
@@ -8,7 +9,8 @@ export default {
     return {
       showReadme: true,
       readme: null,
-      isFetchingReadme: false
+      isFetchingReadme: false,
+      readmeError: false
     }
   },
   async created() {
@@ -31,11 +33,11 @@ export default {
       this.readme = md.render(readme)
       this.isFetchingReadme = false
     } catch (err) {
-      console.log(err)
+      this.readmeError = true
       this.isFetchingReadme = false
     }
   },
-  components: { GitHubIcon, Loading }
+  components: { GitHubIcon, Loading, ErrorComponent }
 }
 </script>
 
@@ -52,7 +54,8 @@ export default {
       <Loading v-if="isFetchingReadme" />
       <section v-if="readme" class="readme">
         <h2>Readme</h2>
-        <div v-html="readme" class="readme-container"></div>
+        <ErrorComponent v-if="readmeError" />
+        <div v-else v-html="readme" class="readme-container"></div>
       </section>
     </div>
   </div>

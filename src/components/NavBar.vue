@@ -15,6 +15,7 @@ const { profile } = storeToRefs(githubData)
       <img :src="profile.avatar_url" alt="avatar" class="avatar-img" height="30" />
       <span>{{ profile.login }}</span>
     </RouterLink>
+    <RouterLink :to="{ name: 'home' }" v-else class="profile-info">Home</RouterLink>
     <RouterLink :to="{ name: 'repos' }">Repositories</RouterLink>
   </div>
 </template>

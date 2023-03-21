@@ -6,6 +6,8 @@ import TwitterIcon from '../../components/icons/TwitterIcon.vue'
 import LocationIcon from '../../components/icons/LocationIcon.vue'
 import LinkIcon from '../../components/icons/LinkIcon.vue'
 import Loading from '../../components/Loading.vue'
+import UsersIcon from '../../components/icons/UsersIcon.vue'
+import ErrorComponent from '../../components/ErrorComponent.vue'
 
 const githubData = useGithubDataStore()
 
@@ -15,18 +17,20 @@ const { profile, loadingProfile, error } = storeToRefs(githubData)
 <template>
   <main>
     <Loading v-if="loadingProfile" />
-    <div v-else-if="error">error: {{ error }}</div>
+    <div v-else-if="error"><ErrorComponent /></div>
     <div v-else>
       <div class="flex-center avatar-container"><img :src="profile.avatar_url" /></div>
       <div class="container">
         <h1>{{ profile.name }} ({{ profile.login }})</h1>
         <div v-if="profile.bio" class="bio-container">
           <h2>About</h2>
-          {{ profile.bio }}</div>
+          {{ profile.bio }}
+        </div>
         <a :href="profile.html_url" target="_blank" class="open-in-github horizontal-flex-small-gap"
           ><span>Visit GitHub Page</span><span><GitHubIcon /></span
         ></a>
         <div class="connections">
+          <span><UsersIcon /></span>
           <span>Followers: {{ profile.followers }}</span>
           <span>Following: {{ profile.following }}</span>
         </div>
@@ -42,7 +46,9 @@ const { profile, loadingProfile, error } = storeToRefs(githubData)
             >@{{ profile.twitter_username }}</a
           >
         </div>
-        <RouterLink to="/repos">Public Repositories ({{ profile.public_repos }})</RouterLink>
+        <RouterLink to="/repos" class="open-in-github"
+          >Public Repos ({{ profile.public_repos }})</RouterLink
+        >
       </div>
     </div>
   </main>
@@ -51,6 +57,7 @@ const { profile, loadingProfile, error } = storeToRefs(githubData)
 <style scoped>
 main > div {
   display: flex;
+  flex: 1;
   flex-direction: column;
   gap: 2em;
 }
@@ -97,7 +104,7 @@ main > div {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 2em;
+  gap: 1em;
   width: 100%;
 }
 </style>

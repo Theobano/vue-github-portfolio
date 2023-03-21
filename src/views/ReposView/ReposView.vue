@@ -4,6 +4,8 @@ import { useGithubDataStore } from '@/stores/githubData'
 import { storeToRefs } from 'pinia'
 import { default as useWindowSize } from '@/composables/windowSize'
 import Repo from './Repo.vue'
+import Loading from '../../components/Loading.vue'
+import ErrorBoundary from '../../components/ErrorBoundary.vue'
 
 export default {
   setup() {
@@ -12,7 +14,6 @@ export default {
     const { windowWidth } = useWindowSize()
 
     githubData.fetchRepos()
-
     return {
       repos,
       loadingRepos,
@@ -21,7 +22,7 @@ export default {
     }
   },
 
-  components: { Repo },
+  components: { Repo, Loading, ErrorBoundary },
 
   data: () => ({
     // paginate repos
@@ -46,26 +47,29 @@ export default {
 
 <template>
   <main>
-    <div class="repos-container">
-      <div v-for="repo in currentPageData" class="repo-container">
-        <Repo :repo="repo" :key="repo.id" />
-        <RouterView v-if="repo.name === $route.params.repoName" :repo="repo" />
+    <ErrorBoundary>
+      <Loading v-if="loadingRepos" />
+      <div v-else class="repos-container">
+        <div v-for="repo in currentPageData" class="repo-container">
+          <Repo :repo="repo" :key="repo.id" />
+          <RouterView v-if="repo.name === $route.params.repoName" :repo="repo" />
+        </div>
       </div>
-    </div>
-    <div v-if="pageCount > 1" class="pagination flex-center">
-      <button v-if="currentPage > 1" @click="currentPage--, $router.push(`/repos`)">&lt</button>
-      <button
-        v-for="page in pageCount"
-        :key="page"
-        @click=";(currentPage = page), $router.push(`/repos`)"
-        :class="{ active: page === currentPage }"
-      >
-        {{ page }}
-      </button>
-      <button v-if="currentPage < pageCount" @click="currentPage++, $router.push(`/repos`)">
-        &gt
-      </button>
-    </div>
+      <div v-if="pageCount > 1" class="pagination flex-center">
+        <button v-if="currentPage > 1" @click="currentPage--, $router.push(`/repos`)">&lt</button>
+        <button
+          v-for="page in pageCount"
+          :key="page"
+          @click=";(currentPage = page), $router.push(`/repos`)"
+          :class="{ active: page === currentPage }"
+        >
+          {{ page }}
+        </button>
+        <button v-if="currentPage < pageCount" @click="currentPage++, $router.push(`/repos`)">
+          &gt
+        </button>
+      </div>
+    </ErrorBoundary>
   </main>
 </template>
 
